@@ -1,7 +1,7 @@
 /**
  * Created by litong on 2017/6/27.
  */
-var pkg = require('./package.json')
+// var pkg = require('./package.json')
 var path = require('path')
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -9,39 +9,48 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, 'app/index.jsx'),
+    app: path.resolve(__dirname, 'app/index.js'),
     // 将package.json第三方依赖dependencies单独打包
-    vendor: Object.keys(pkg.dependencies)
+    // vendor: Object.keys(pkg.dependencies)
+    vendor: [
+      'react',
+      'react-dom',
+      // 'react-redux',
+      // 'react-router',
+      // 'redux',
+      // 'es6-promise',
+      // 'whatwg-fetch',
+      // 'immutable'
+    ]
   },
   output: {
     path: __dirname + "/build", //上线目录/build
-    filename: "/js/[name].[chunkhash:8].js" //给文件加上md5后缀
+    filename: "js/[name].[chunkhash:8].js", //给文件加上md5后缀
+    publicPath: '/'
   },
 
   resolve:{
-      extensions:['', '.js','.jsx']
+      extensions:['.js','.jsx']
   },
 
   module: {
     rules: [
       { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel-loader' },
-      { test: /\.less$/, exclude: /node_modules/, loader: ExtractTextPlugin.extract({
-        	fallback: "style-loader",
-        	use: ["css-loader", "postcss-loader", "less-loader"]
-        }) 
-  	  },
-      { test: /\.css$/, exclude: /node_modules/, loader: ExtractTextPlugin.extract({
-        	fallback: "style-loader",
-        	use: ["css-loader", "postcss-loader"]
-      	})
-  	  },
+      { test: /\.less$/, exclude: /node_modules/, use: ExtractTextPlugin.extract({
+        fallback: "style-loader",
+        use: ["css-loader", "postcss-loader", "less-loader"]
+      }) },
+      { test: /\.css$/, exclude: /node_modules/, use: ExtractTextPlugin.extract({
+        fallback: "style-loader",
+        use: ["css-loader", "postcss-loader"]
+      }) },
       { test:/\.(png|gif|jpg|jpeg|bmp)$/i, loader:'url-loader?limit=5000&name=img/[name].[chunkhash:8].[ext]' },
       { test:/\.(png|woff|woff2|svg|ttf|eot)($|\?)/i, loader:'url-loader?limit=5000&name=fonts/[name].[chunkhash:8].[ext]'}
     ]
   },
-  postcss: [
-    require('autoprefixer')
-  ],
+  // postcss: [
+  //   require('autoprefixer')
+  // ],
 
   plugins: [
     // webpack 内置的 banner-plugin
@@ -60,7 +69,7 @@ module.exports = {
     }),
 
     // 为组件分配ID，通过这个插件webpack可以分析和优先考虑使用最多的模块，并为它们分配最小的ID
-    // new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     
     new webpack.optimize.UglifyJsPlugin({
         compress: {
@@ -72,14 +81,12 @@ module.exports = {
     // 分离CSS和JS文件
     // new ExtractTextPlugin('/css/[name].[chunkhash:8].css'), 
     new ExtractTextPlugin({
-		filename: "/css/[name].[chunkhash:8].css",
-		disable: false,
-		allChunks: true
-	}),
+        filename: "css/[name].[chunkhash:8].css"
+    }),
     // 提供公共代码
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: '/js/[name].[chunkhash:8].js'
+      filename: 'js/[name].[chunkhash:8].js'
     }),
 
     // 可在业务 js 代码中使用 __DEV__ 判断是否是dev模式（dev模式下可以提示错误、测试报告等, production模式不提示）
