@@ -22,42 +22,15 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 include: /app/,
-                loader: "babel-loader"
+                use: ['babel-loader']
             },
             {
-                test: /\.css$/,
-                use : [
-                    {
-                        loader : 'style-loader'
-                    },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1
-                        }
-                    },
-                    //自动补全兼容代码
-                    {
-                        loader: 'postcss-loader',
-                        options : {
-                            plugins : function() {
-                                return [
-                                    require('autoprefixer')({
-                                        broswers : ['last 5 versions']
-                                    })
-                                ];
-                            }
-                        }
-                    }
-                ]
+              test: /\.css$/,
+              use: [ 'style-loader', 'css-loader','postcss-loader' ]
             },
             {
-                test: /\.less$/,
-                use: [
-                    "style-loader",
-                    "css-loader",
-                    "less-loader"
-                ]
+              test: /\.less$/i,
+              use: [ 'style-loader','css-loader', 'less-loader', 'postcss-loader']
             },
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
@@ -91,10 +64,10 @@ module.exports = {
         }),
         // 为webpack里面的loader添加插件
         new webpack.LoaderOptionsPlugin(),
-        
+
     ],
     devServer: {
-      //此处是webpack-dev-server的配置
+        //此处是webpack-dev-server的配置
         proxy: {
             '/api': {
                 target: 'http://localhost:3000',

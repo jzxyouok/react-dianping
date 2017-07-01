@@ -16,4 +16,3 @@ render(
     <Todo/>,
     document.getElementById('root')
 )
-
