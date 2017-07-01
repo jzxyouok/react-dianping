@@ -1,10 +1,11 @@
-运行
+React 性能优化，详情参考[这里](./docs/README.md)
 
-	//安装依赖
-	npm install
-	//先启动后台服务，用于提供本地模拟的后台数据
-	npm run mock
-	//启动项目,将运行在本地的8000端口
-	npm run start
-	//上线和优化项目
-	//npm run build
+这里用todolist小demo演示了react如何简单优化。
+
+运行
+	
+	npm install //安装依赖
+
+	npm run start //启动项目
+
+	npm run build //上线和优化项目
