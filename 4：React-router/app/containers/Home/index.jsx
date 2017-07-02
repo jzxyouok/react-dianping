@@ -4,10 +4,13 @@ import { Link } from 'react-router'
 class Home extends React.Component{
   render(){
     return(
-      <p>Home</p>
-      // 使用 router
-      // <Link to='/list'></Link>
+      <div>
+        <p>Home</p>
+        {/* 使用 router */}
+        <Link to="/list">to list</Link>
+      </div>
     )
   }
 }
 export default Home
+
