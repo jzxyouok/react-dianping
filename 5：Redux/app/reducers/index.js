@@ -1,16 +1,14 @@
-const initialState = {} //初始state
-const USERINFO_LOGIN = 'USERINFO_LOGIN'
-const UPDATE_CITYNAME = 'UPDATE_CITYNAME'
+// 第一步：定义规则
+// 将index.js导入进来，组织多个 reducer
+import { combineReducers } from 'redux'
 
-export default function userinfo( state = initialState,action){
-  switch (action.type) {
-    // 登录
-    case USERINFO_LOGIN:
-      return action.data
-    // 修改城市
-    case UPDATE_CITYNAME:
-      return action.data
-    default:
-      return state
-  }
-}
+import userinfo from './userinfo.js'
+
+console.log(userinfo)
+
+const rootReducer = combineReducers({
+  userinfo,
+  //userinfo2,
+  //userinfo3
+})
+export default rootReducer
