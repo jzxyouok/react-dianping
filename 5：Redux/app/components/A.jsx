@@ -1,13 +1,11 @@
 import React from 'react'
 
-class A extends React.Component{
-	render(){
-		return(
-			<div>
-				<p>{this.props.connect_userinfo.userid}</p>
-			</div>
-		)
-	}
+class A extends React.Component {
+    render() {
+        return (
+            <p>{this.props.userinfo.userid}</p>
+        )
+    }
 }
 
 export default A

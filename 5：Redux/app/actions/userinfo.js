@@ -16,7 +16,7 @@ export function updateCityName(data){
 	}
 }
 */
-import * as actionTypes from '../constants/userinfo'
+import * as actionTypes from '../constants/userinfo.js'
 
 export function login(data) {
     return {

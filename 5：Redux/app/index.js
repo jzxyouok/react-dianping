@@ -26,9 +26,9 @@ render(
 import { Provider } from 'react-redux' //导入Provider组件，本质还是react组件，只是根据redux的特性进行了封装来做redux的一些事情
 import configureStore from './store/configureStore.js'
 
-const store = configureStore()
-
 import Hello from './containers/Hello.jsx'
+
+const store = configureStore()
 
 
 render(
