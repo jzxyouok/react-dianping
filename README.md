@@ -7,3 +7,4 @@
 * 3: [React性能优化方案](https://github.com/dzfrontend/react-dianping/tree/master/3%EF%BC%9AReact%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/docs)
 * 4: [React-router](https://github.com/dzfrontend/react-dianping/tree/master/4%EF%BC%9AReact-router/docs)
 * 5: [Redux](https://github.com/dzfrontend/react-dianping/tree/master/5%EF%BC%9ARedux/docs)
+* 6: [Fetch和Mock](https://github.com/dzfrontend/react-dianping/blob/master/6%EF%BC%9AFetch%E5%92%8CMock/docs)
