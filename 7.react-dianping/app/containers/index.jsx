@@ -11,26 +11,26 @@ import {connect} from 'react-redux'
 import * as userInfoActionsFromOtherFile from '../actions/userinfo.js' //actions
 
 class App extends React.Component{
-	constructor(props,context) {
-		super(props,context);
-		this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this); //性能优化组件的使用
-		this.state = {
-			initDone:false
-		}
-	}
-	render(){
-		return(
-			<div>
+    constructor(props,context) {
+        super(props,context);
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this); //性能优化组件的使用
+        this.state = {
+            initDone:false
+        }
+    }
+    render(){
+        return(
+            <div>
 
-				{/*子路由组件用this.props.children，这样子组件就共用父组件App里面的东西*/}
-				{
-					this.state.initDone ? this.props.children : <div>正在加载...</div>
-				} 
-			</div>
-		)
-	}
-	componentDidMount(){
-		this.setState({
+                {/*子路由组件用this.props.children，这样子组件就共用父组件App里面的东西*/}
+                {
+                    this.state.initDone ? this.props.children : <div>正在加载...</div>
+                } 
+            </div>
+        )
+    }
+    componentDidMount(){
+        this.setState({
             initDone: true
         })
         //获取本地缓存的城市
@@ -40,9 +40,9 @@ class App extends React.Component{
         }
         //redux App组件dispatch到action
         this.props.userInfoActions.update({
-        	cityName:cityName
+            cityName:cityName
         })
-	}
+    }
 }
 // export default App
 
@@ -51,19 +51,21 @@ class App extends React.Component{
 
 // 把state和dispatch作为属性props传到App组件中
 function mapStateToProps(state){
-	return{}
+    return{
+        // userinfo:state.userinfo //reducer里面的userinfo
+    }
 }
 
 function mapDispatchToProps(dispatch){
-	return{
-		userInfoActions:bindActionCreators(userInfoActionsFromOtherFile,dispatch)
-	}
+    return{
+        userInfoActions:bindActionCreators(userInfoActionsFromOtherFile,dispatch)
+    }
 }
 
 //connect 将redux和react-redux连接起来
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(App)
 
 // 所以整个redux的过程是：
