@@ -51,8 +51,14 @@ module.exports = {
           use: ['css-loader', 'less-loader', 'postcss-loader']
         })
       },
-      { test:/\.(png|gif|jpg|jpeg|bmp)$/i, loader:'url-loader?limit=5000&name=img/[name].[chunkhash:8].[ext]' },
-      { test:/\.(png|woff|woff2|svg|ttf|eot)($|\?)/i, loader:'url-loader?limit=5000&name=fonts/[name].[chunkhash:8].[ext]'}
+      { 
+        test:/\.(png|jpg|svg|gif|jpeg|bmp)$/, 
+        loader:'url-loader?limit=20000&name=img/[name].[chunkhash:8].[ext]' 
+      },
+      { 
+        test:/\.(woff2?|eot|ttf|otf)(\?.*)?$/, 
+        loader:'url-loader?limit=5000&name=fonts/[name].[chunkhash:8].[ext]'
+      }
     ]
   },
   // postcss: [
@@ -69,9 +75,14 @@ module.exports = {
     }),
 
     // 定义为生产环境，编译 React 时压缩到最小
+    // new webpack.DefinePlugin({
+    //   'process.env':{
+    //     'NODE_ENV': JSON.stringify(process.env.NODE_ENV) //或者为'"production"'
+    //   }
+    // }),
     new webpack.DefinePlugin({
       'process.env':{
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV) //或者为'"production"'
+        'NODE_ENV': JSON.stringify('production')
       }
     }),
 

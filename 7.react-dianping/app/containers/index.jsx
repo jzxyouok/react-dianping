@@ -21,7 +21,6 @@ class App extends React.Component{
     render(){
         return(
             <div>
-
                 {/*子路由组件用this.props.children，这样子组件就共用父组件App里面的东西*/}
                 {
                     this.state.initDone ? this.props.children : <div>正在加载...</div>
