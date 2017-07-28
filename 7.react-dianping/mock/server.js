@@ -1,33 +1,22 @@
+/*
+ *parms 利用koa创建的api接口
+ *创建访问请求API接口，npm run mock启动该数据mock，访问http://localhost:3000查看
+ *要想在http://localhost:8080上访问数据mock，则需要在./webpack.config.js的webpack-dev-server做一个代理的转发
+*/
 var Koa = require('koa');
 var Router = require('koa-router');
  
 var app = new Koa();
 var router = new Router();
-var koaBody = require('koa-body')();
+// var koaBody = require('koa-body')();
 
-//get请求 访问http://localhost:3000
-router.get('/', function(ctx, next) {
-    ctx.body = 'hello koa !'
-});
-
-router.get('/api', function(ctx, next) {
-    ctx.body = 'test data' 
-});
-router.get('/api/1', function(ctx, next) {
-    ctx.body = 'test data 1'
-});
-router.get('/api/2', function(ctx, next) {
-    ctx.body = {
-        a: 1,
-        b: '123'
-    }
+// 创建访问请求API接口
+// 首页-超值特惠接口
+var homeAdData = require('./home/ad.js');
+router.get('/api/homeAd', function(ctx, next) {
+    ctx.body = homeAdData
 });
 
-//post请求
-router.post('/api/post', koaBody, function(ctx, next) {
-    console.log(ctx.request.body)
-    ctx.body = JSON.stringify(ctx.request.body)
-});
 
 app.use(router.routes())
    .use(router.allowedMethods());
@@ -35,7 +24,3 @@ app.use(router.routes())
 app.listen(3000);
 console.log('server running at http://localhost:3000');
 
-/*
-npm run mock启动该数据mock
-要想在http://localhost:8080上访问数据mock，则需要在./webpack.config.js的webpack-dev-server做一个代理的转发
-*/

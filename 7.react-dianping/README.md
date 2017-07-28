@@ -1,8 +1,4 @@
-Fetch和Mock基础知识，详情参考[这里](./docs/README.md)
-
-### 增加的插件：
-
-先数据 Mock，再fetch
+react项目实战：
 
 #### fetch:
 	

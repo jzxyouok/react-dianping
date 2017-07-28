@@ -1,3 +1,4 @@
+//所有页面的父路由
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin' //性能优化组件
 

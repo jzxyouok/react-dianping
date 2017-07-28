@@ -11,15 +11,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "es6-promise": "^4.1.1",
     "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "react-addons-perf": "^15.4.2",
     "react-addons-pure-render-mixin": "^15.5.2",
-    "react-dom": "^15.6.1",
-    "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
+    "react-redux": "^4.4.5",
     "redux": "^3.6.0",
-    "whatwg-fetch": "^2.0.3"
+    "react-swipe": "^5.0.8",
+    "swipe-js-iso": "^2.0.3",
+    "whatwg-fetch": "^2.0.3",
+    "es6-promise": "^4.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.0",
