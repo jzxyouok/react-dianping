@@ -3,9 +3,9 @@ import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 
 //fetch
-import {getAdData} from '../../../fetch/Home/home.js' //首页-超值特惠fetch
+import {getAdData} from '../../../fetch/Home/home.js' //首页-超值特惠fetch请求
 
-import HomeAd from '../../../components/HomeAd/index.jsx' //拆分的组件
+import HomeAd from '../../../components/HomeAd/index.jsx' //拆分的木偶组件
 
 class Ad extends React.Component {
     constructor(props, context) {
@@ -27,8 +27,8 @@ class Ad extends React.Component {
             </div>
         )
     }
+    //用fetch获取数据
     componentDidMount(){
-    	// 获取数据
     	var fetchResult = getAdData();
     	fetchResult.then((res) => {
     		return res.json()

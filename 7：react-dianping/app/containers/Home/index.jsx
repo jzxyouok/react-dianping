@@ -9,6 +9,7 @@ import Category from '../../components/Category/index.jsx' //首页轮播
 
 //智能组件
 import Ad from './subpage/Ad.jsx' //首页超值特惠
+import HomeList from './subpage/HomeList.jsx' //首页猜你喜欢
 
 // redux
 import {bindActionCreators} from 'redux'
@@ -27,6 +28,8 @@ class Home extends React.Component{
                 <Category/>
                 <div style={{height:'15px'}}>{/* 样式分割线 */}</div>
                 <Ad/>
+                {/* 猜你喜欢需要把城市名传进去api获取数据 */}
+                <HomeList cityName={this.props.userinfo.cityName}/>
 			</div>
 		)
 	}

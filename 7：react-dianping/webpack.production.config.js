@@ -75,11 +75,6 @@ module.exports = {
     }),
 
     // 定义为生产环境，编译 React 时压缩到最小
-    // new webpack.DefinePlugin({
-    //   'process.env':{
-    //     'NODE_ENV': JSON.stringify(process.env.NODE_ENV) //或者为'"production"'
-    //   }
-    // }),
     new webpack.DefinePlugin({
       'process.env':{
         'NODE_ENV': JSON.stringify('production')
