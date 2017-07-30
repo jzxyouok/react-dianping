@@ -51,6 +51,13 @@ class HomeList extends React.Component{
 	
 	//加载更多
 	loadMoreData(){
+		//只加载前5页数据
+		if(this.state.page > 5){
+			this.setState({
+	        	hasMore: false
+	        })
+	        return;
+		}
 		// 记录状态
         this.setState({
             isLoadingMore: true //加载中
