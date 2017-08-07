@@ -6,6 +6,7 @@ import App from '../containers/index.jsx'
 //子路由
 import Home from '../containers/Home/index.jsx' //首页
 import City from '../containers/City/index.jsx' //选择城市页
+import Search from '../containers/Search/index.jsx' //搜索结果页
 
 // 如果是大型项目，router部分就需要做更加复杂的配置
 // 参见 https://github.com/reactjs/react-router/tree/master/examples/huge-apps
@@ -21,6 +22,7 @@ class RouterMap extends React.Component{
 					*/}
 					<IndexRoute component={Home}/>
 					<Route path="/city" component={City}/>
+					<Route path='/search/:category(/:keyword)' component={Search}/> {/*括号里面的keyword表示可传可不传*/}
 				</Route>
 			</Router>
 		)
